@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     //绑定控件，按钮的点击事件，生成按钮
     @BindView(R.id.btn_sccode)
     Button codeBtn;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.iv_image)
     ImageView codeIv;
 
-    Unbinder bind;
+
 
     //相机扫描按钮
     @BindView(R.id.btn_camarascancode)
@@ -48,19 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-       bind = ButterKnife.bind(this);//butterknife绑定当前类，初始化黄油刀的过程
-
-
-        initData();
-
-//        codeBtn = findViewById(R.id.btn_sccode);
+    protected int bindLayoutId() {
+        return R.layout.activity_main;
     }
 
-    private void initData() {
+    protected void initData() {
+        //初始化
+        CodeUtils.init(this);
 
 //        codeBtn.setText("我是修改的代码");
 //        codeBtn.setOnClickListener(new View.OnClickListener() {
@@ -107,12 +103,12 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_open)
     public void openBtn(View view){
-        CodeUtils.isLightEnable(true);
+//        CodeUtils.isLightEnable(true);
     }
 
     @OnClick(R.id.btn_close)
     public void closeBtn(View view){
-        CodeUtils.isLightEnable(false);
+//        CodeUtils.isLightEnable(false);
     }
 
 
@@ -139,8 +135,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (bind!=null){
-            bind.unbind();//释放资源
-        }
+
     }
 }

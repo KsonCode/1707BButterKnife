@@ -48,4 +48,7 @@ dependencies {
 
     //zxing二维码封装库，提供二维码各种功能
     implementation 'com.github.tongchexinfeitao:QRCodeLibrary:1.0'
+
+    //recyclerview依赖
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }
